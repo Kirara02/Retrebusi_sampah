@@ -3,8 +3,8 @@ import 'package:retrebusi_sampah/themes/theme.dart';
 import 'package:retrebusi_sampah/ui/widgets/buttons.dart';
 import 'package:retrebusi_sampah/ui/widgets/forms.dart';
 
-class SignInAsPage extends StatelessWidget {
-  const SignInAsPage({Key? key}) : super(key: key);
+class SignUpAsPage extends StatelessWidget {
+  const SignUpAsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +34,10 @@ class SignInAsPage extends StatelessWidget {
                 height: 55,
               ),
               const CustomSelectedButton(title: 'Petugas'),
-              const SizedBox(height: 15,),
+              const SizedBox(
+                height: 15,
+              ),
               const CustomSelectedButton(title: 'Masyarakat'),
-
             ],
           )
         ],
@@ -45,7 +46,9 @@ class SignInAsPage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 40),
         child: CustomFilledButton(
           title: 'Next',
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushReplacementNamed('/sign-up');
+          },
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

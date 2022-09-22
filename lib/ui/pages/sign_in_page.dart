@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:retrebusi_sampah/themes/theme.dart';
-import 'package:retrebusi_sampah/ui/pages/sign_in_as_page.dart';
+import 'package:retrebusi_sampah/ui/pages/sign_up_as_page.dart';
 import 'package:retrebusi_sampah/ui/widgets/buttons.dart';
 import 'package:retrebusi_sampah/ui/widgets/forms.dart';
 
@@ -9,6 +9,7 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool showFab = MediaQuery.of(context).viewInsets.bottom != 0;
     return Scaffold(
       backgroundColor: greenColor,
       bottomNavigationBar: BottomAppBar(
@@ -19,7 +20,9 @@ class SignInPage extends StatelessWidget {
             title: 'Sign Up',
             style: greyTextStyle,
             alignment: Alignment.center,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushReplacementNamed('/sign-up-as');
+            },
           ),
         ),
       ),
@@ -40,11 +43,11 @@ class SignInPage extends StatelessWidget {
               const SizedBox(
                 height: 26,
               ),
-              CustomFormField(title: 'Username'),
+              const CustomFormFieldLogin(title: 'Username'),
               const SizedBox(
                 height: 15,
               ),
-              CustomFormField(
+              const CustomFormFieldLogin(
                 title: 'Password',
                 obscureText: true,
               ),
@@ -60,17 +63,16 @@ class SignInPage extends StatelessWidget {
           )
         ],
       ),
-      floatingActionButton: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 40),
-        child: CustomFilledButton(
-          title: 'Login',
-          onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => const SignInAsPage(),
-              ),
-            );
-          },
+      floatingActionButton: Visibility(
+        visible: !showFab,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 40),
+          child: CustomFilledButton(
+            title: 'Login',
+            onPressed: () {
+              Navigator.of(context).pushReplacementNamed('/home');
+            },
+          ),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
